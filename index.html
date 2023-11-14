@@ -1,0 +1,63 @@
+---
+title: blog
+---
+
+<html>
+
+<head>
+  <title>Prince Fefar</title>
+  <meta charset='UTF-8'>
+  <meta content='width=device-width, initial-scale=1' name='viewport' />
+
+  <meta name='description' content='Prince Fefar is a Engineer.'>
+  <!-- A decent browser will parse this fine:
+         https://webmasters.stackexchange.com/questions/92744. -->
+  <meta name='keywords' content='
+        linear algebra,
+        computer science
+    '>
+  <meta name='author' content='Prince Fefar'>
+
+  <link rel='shortcut icon' href='/favicon.png?v=e' />
+  <link href='/css/blog.css' rel='stylesheet' />
+
+</head>
+
+<body>
+  {% include nav.html %}
+  <div id='blog' class='wrap'>
+    <div id='intro'>
+      <div class='quote'>
+        <p>It is not knowledge, but the act of learning, not possession but the act of getting there, which grants the
+          greatest enjoyment. When I have clarified and exhausted a subject, then I turn away from it, in order to go
+          into darkness again.</p>
+        <a href='https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss' target='_blank'>Carl Friedrich Gauss</a>
+      </div>
+    </div>
+
+    <div id='posts' class='section'>
+      {% for post in site.posts %}
+      <div class='post-row'>
+        <p class='post-title'>
+          <a href="{{ post.url }}">
+            {% katexmm %}
+            {{ post.title }}
+            {% endkatexmm %}
+          </a>
+        </p>
+        <p class='post-date'>
+          {{ post.date | date_to_long_string }}
+        </p>
+      </div>
+      <p class='post-subtitle'>
+        {% katexmm %}
+        {{ post.subtitle }}
+        {% endkatexmm %}
+      </p>
+      <span class='hidden'>{{ forloop.index }}</span>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+
+</html>
