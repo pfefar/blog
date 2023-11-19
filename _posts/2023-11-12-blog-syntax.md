@@ -45,7 +45,7 @@ f={(0,10),(1,9),(2,10),(3,9),(4,10),(5,1),(6,10),(7,9),(8,10),(9,8)} \tag{3}
 Here is a plot of the signal:
 
 <div class='figure'>
-  <img src="./assets/images/img_one.png" style="width: 70%; display: block; margin: 0 auto;" alt="descriptive text for image" />
+  <img src="/assets/images/img_one.png" style="width: 70%; display: block; margin: 0 auto;" alt="descriptive text for image" />
 </div>
 
 
