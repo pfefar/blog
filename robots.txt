@@ -1,1 +1,1 @@
-Sitemap: /blog/sitemap.xml
+Sitemap: https://pfefar.github.io/blog/sitemap.xml
