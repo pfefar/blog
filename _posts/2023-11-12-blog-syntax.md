@@ -4,7 +4,7 @@ title:  "From Convolution to Neural Network"
 subtitle: "Most explanations of CNNs assume the reader understands the convolution operation and how it relates to image processing. I explore convolutions in detail and explain how they are implemented as layers in a neural network."
 date:   2023-11-12 13:25:36 -0800
 keywords: machine learning, linear algebra, computational mathematics
-published: true
+published: false
 ---
 ## Introduction
 
@@ -45,9 +45,11 @@ f={(0,10),(1,9),(2,10),(3,9),(4,10),(5,1),(6,10),(7,9),(8,10),(9,8)}
 Here is a plot of the signal:
 
 <div class='figure'>
-  <img src="/assets/img_one.png" style="width: 70%; display: block; margin: 0 auto;" alt="descriptive text for image" />
+  <img src="/assets/images/img_one.png" style="width: 70%; display: block; margin: 0 auto;" alt="descriptive text for image" />
 </div>
 
+
+Below is how to do multiple equstion numbering:
 {% katex display %}
 \begin{aligned}
 \mathcal{P}\left(\left\{x_i, x_j\right\} \subseteq X\right) & =\left|\begin{array}{ll}
@@ -59,3 +61,43 @@ K_{j i} & K_{j j}
 \tag{1}
 \end{aligned}
 {% endkatex %}
+
+```python
+from tinygrad.tensor import Tensor
+import tinygrad.nn.optim as optim
+
+class TinyBobNet:
+  def __init__(self):
+    self.l1 = Tensor.uniform(784, 128)
+    self.l2 = Tensor.uniform(128, 10)
+
+  def forward(self, x):
+    return x.dot(self.l1).relu().dot(self.l2).log_softmax()
+
+model = TinyBobNet()
+optim = optim.SGD([model.l1, model.l2], lr=0.001)
+
+# ... complete data loader here
+
+out = model.forward(x)
+loss = out.mul(y).mean()
+optim.zero_grad()
+loss.backward()
+optim.step()
+
+```
+
+{% katex display %}
+f=\left[\begin{array}{ccccc}
+1 & 2 & 3 & 4 & 5 \\
+6 & 7 & 8 & 9 & 10 \\
+11 & 12 & 13 & 14 & 15 \\
+16 & 17 & 18 & 19 & 20
+\end{array}\right] \quad g=\left[\begin{array}{ccc}
+a & b & c \\
+d & e & f \\
+g & h & i
+\end{array}\right]
+{% endkatex %}
+
+
