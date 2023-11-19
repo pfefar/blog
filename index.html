@@ -18,8 +18,9 @@ title: blog
     '>
   <meta name='author' content='Prince Fefar'>
 
-  <link rel='shortcut icon' href='/favicon.png?v=e' />
-  <link href='./css/blog.css' rel='stylesheet' />
+  <link rel='shortcut icon' href='{{ "/favicon.png?v=e" | prepend: site.baseurl }}' />
+  <link href='{{ "/css/blog.css" | prepend: site.baseurl }}' rel='stylesheet' />
+
 
 </head>
 
@@ -39,7 +40,7 @@ title: blog
       {% for post in site.posts %}
       <div class='post-row'>
         <p class='post-title'>
-          <a href="{{ post.url }}">
+          <a href="{{ post.url | prepend: site.baseurl }}">
             {% katexmm %}
             {{ post.title }}
             {% endkatexmm %}
